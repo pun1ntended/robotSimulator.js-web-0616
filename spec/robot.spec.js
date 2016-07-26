@@ -9,7 +9,7 @@ describe("Robot", function() {
     for (var i = 0; i < directions.length; i++) {
       var currentDirection = directions[i];
       robot.orient(currentDirection);
-      expect(robot.bearing).toEqual(currentDirection);
+      expect(robot.bearing()).toEqual(currentDirection);
     }
   });
 
@@ -22,49 +22,49 @@ describe("Robot", function() {
   it("turn right from north", function() {
     robot.orient('north');
     robot.turnRight();
-    expect(robot.bearing).toEqual('east');
+    expect(robot.bearing()).toEqual('east');
   });
 
   it("turn right from east", function() {
     robot.orient('east');
     robot.turnRight();
-    expect(robot.bearing).toEqual('south');
+    expect(robot.bearing()).toEqual('south');
   });
 
   it("turn right from south", function() {
     robot.orient('south');
     robot.turnRight();
-    expect(robot.bearing).toEqual('west');
+    expect(robot.bearing()).toEqual('west');
   });
 
   it("turn right from west", function() {
     robot.orient('west');
     robot.turnRight();
-    expect(robot.bearing).toEqual('north');
+    expect(robot.bearing()).toEqual('north');
   });
 
   it("turn left from north", function() {
     robot.orient('north');
     robot.turnLeft();
-    expect(robot.bearing).toEqual('west');
+    expect(robot.bearing()).toEqual('west');
   });
 
   it("turn left from east", function() {
     robot.orient('east');
     robot.turnLeft();
-    expect(robot.bearing).toEqual('north');
+    expect(robot.bearing()).toEqual('north');
   });
 
   it("turn left from south", function() {
     robot.orient('south');
     robot.turnLeft();
-    expect(robot.bearing).toEqual('east');
+    expect(robot.bearing()).toEqual('east');
   });
 
   it("turn left from west", function() {
     robot.orient('west');
     robot.turnLeft();
-    expect(robot.bearing).toEqual('south');
+    expect(robot.bearing()).toEqual('south');
   });
 
   it("robot coordinates", function() {
@@ -127,7 +127,7 @@ describe("Robot", function() {
     robot.place({x: -2, y: 1, direction: "east"});
     robot.evaluate("RLAALAL");
     expect(robot.coordinates).toEqual([0,2]);
-    expect(robot.bearing).toEqual("west");
+    expect(robot.bearing()).toEqual("west");
   });
 
   it("instruct many robots", function() {
@@ -142,12 +142,12 @@ describe("Robot", function() {
     robot3.evaluate("LAAARRRALLLL");
 
     expect(robot1.coordinates).toEqual([-4, 1]);
-    expect(robot1.bearing).toEqual("west");
+    expect(robot1.bearing()).toEqual("west");
 
     expect(robot2.coordinates).toEqual([-3, -8]);
-    expect(robot2.bearing).toEqual("south");
+    expect(robot2.bearing()).toEqual("south");
 
     expect(robot3.coordinates).toEqual([11, 5]);
-    expect(robot3.bearing).toEqual("north");
+    expect(robot3.bearing()).toEqual("north");
   });
 });
